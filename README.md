@@ -1,23 +1,16 @@
-# GTEDGE3
-GTEDGE3 Python Codebase
 # GTEDGE3 Codebase
 
-Georgia Tech GTEDGE2 Python-based Codebase for interpreting edge plasmas in tokamak fusion reactors
+Georgia Tech GTEDGE3 Python-based Codebase for interpreting edge plasmas in tokamak fusion reactors
 
 ## Version history
 
-```
- 1.0 initial commit
-```
+*  1.0 initial commit
 
 ## Package dependencies
 
 Python 2.7
-
 Matplotlib
-
 SciPy
-
 Numpy
 
 ## Getting Started
@@ -37,39 +30,39 @@ MaxPlasma\inputs\pshotid_timeid_runid_ersplrhob_sc.txt	Radial electric field fil
 
 ## File structure
 
-.
-├── Inputs
-│   └── fullplasma     # Storage of data files for shots from DIII-D database. GT2 does not call these directly
-│       ├── 118888     # Example directory of shot 118888 with 2 timeids
-│       │   ├── 1525
-│       │   └── 1570
-├── lib                         # Library of packages
-│   ├── beams					# NBeams directory
-│   │   └── NBeamsMDS
-│   │       ├── 118888			# Example of stored data from DIII-D database for NBeams. GT2 does not call these directly
-│   │       │   ├── 1525
-│   │       │   └── 1570
-│   │       ├── Debug			# Fortran 77 compiler debug folder. Used by GT2.
-│   │       ├── Fastloss		# Unused fastloss calculations
-│   │       │   └── Debug
-│   │       ├── nbeams2gtedge	# Deprecated 
-│   │       ├── OSM				# Deprecated
-│   │       │   └── Debug
-│   │       ├── Release			# Fortran 77 compiler release folder. GT2 does not call these directly
-│   │       └── Test			# Fortran 77 test folder.GT2 does not call these directly
-│   │           ├── Debug
-│   │           └── Release
-│   ├── funcs					# Repository of packages used to perform calculations in GT2
-│   └── graphs					# Repository of codes for making pretty pictures for GT2.
-├── MaxPlasma					# Max Hill's background plasma calculation IOL calculations. Called by GT2. This folder includes shotid_timeid_toplasma files required for code
-│   └── inputs					# Repository of data from DIII-D database. Called by GT2.
-│       └── Originals			# Deprecated
-├── Outputs                     # GTEDGE2 outputs .dat files of the previous run if such a file cannot be found. If found, GTEDGE does not run again on the data. Useful for analysis on results.
-└── RawDIIID					# Raw DIII-D data from servers
-    └── 118890
-        ├── 1515
-        └── 1560
-            └── test
+	.
+	├── Inputs
+	│   └── fullplasma     # Storage of data files for shots from DIII-D database. GT2 does not call these directly
+	│       ├── 118888     # Example directory of shot 118888 with 2 timeids
+	│       │   ├── 1525
+	│       │   └── 1570
+	├── lib                         # Library of packages
+	│   ├── beams					# NBeams directory
+	│   │   └── NBeamsMDS
+	│   │       ├── 118888			# Example of stored data from DIII-D database for NBeams. GT2 does not call these directly
+	│   │       │   ├── 1525
+	│   │       │   └── 1570
+	│   │       ├── Debug			# Fortran 77 compiler debug folder. Used by GT2.
+	│   │       ├── Fastloss		# Unused fastloss calculations
+	│   │       │   └── Debug
+	│   │       ├── nbeams2gtedge	# Deprecated 
+	│   │       ├── OSM				# Deprecated
+	│   │       │   └── Debug
+	│   │       ├── Release			# Fortran 77 compiler release folder. GT2 does not call these directly
+	│   │       └── Test			# Fortran 77 test folder.GT2 does not call these directly
+	│   │           ├── Debug
+	│   │           └── Release
+	│   ├── funcs					# Repository of packages used to perform calculations in GT2
+	│   └── graphs					# Repository of codes for making pretty pictures for GT2.
+	├── MaxPlasma					# Max Hill's background plasma calculation IOL calculations. Called by GT2. This folder includes shotid_timeid_toplasma files required for code
+	│   └── inputs					# Repository of data from DIII-D database. Called by GT2.
+	│       └── Originals			# Deprecated
+	├── Outputs                     # GTEDGE2 outputs .dat files of the previous run if such a file cannot be found. If found, GTEDGE does not run again on the data. Useful for analysis on results.
+	└── RawDIIID					# Raw DIII-D data from servers
+	    └── 118890
+		   ├── 1515
+		   └── 1560
+		       └── test
 
 ## Authors
 
