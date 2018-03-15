@@ -17,7 +17,7 @@ from MaxPlasma import plasma
 from scipy.interpolate import UnivariateSpline
 from numpy import interp, pi
 from math import sqrt
-import inspect,datetime,warnings
+import inspect,datetime,warnings,sys
 
 
 def maxDebug(coreData):
@@ -84,11 +84,11 @@ if __name__== "__main__":
 #    nbRun=True
 #    IOL=True
     
-    shotid=118890
-    timeid=1560
-    runid="r90"
-    nbRun=True	
-    IOL=True
+#    shotid=118890
+#    timeid=1560
+#    runid="r90"
+#    nbRun=True	
+#    IOL=True
 #    
 #    shotid=166606
 #    timeid=1950
@@ -102,9 +102,14 @@ if __name__== "__main__":
 #    nbRun=True
 #    IOL=True
     
+    try:
+        shotid,timeid,runid
+    except:
+        raise RuntimeError("Shotid/Timeid/Runid not found or formatted incorrectly")
+    
     errLog=open("GTEDGE3warn.log","a+")
     errLog.write("\n")
-    errLog.write("Time: %s",datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%s"))
+    errLog.write("Time: %s \n" % str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
     errLog.write("%s.%s.%s  nbRun=%s IOL=%s \n" % (str(shotid),str(timeid),str(runid),str(nbRun),str(IOL)))
     
     sys.stderr=errLog
@@ -385,17 +390,25 @@ if __name__== "__main__":
     
     try:
         chiGraphsDic[shotid](coreData,chiList,qList,timeid)
+    except IndexError:
+        print "fuckballs"
+        raise IndexError("Index Error in ChiGraphDic")
     except:
         graphs.popups.popup("Chi graphs not defined for this shot.timeid, using default",title="Warning")
         chiGraphsDic[0000](coreData,chiList,qList,0000)
         
     try:
         diffGraphsDic[shotid](coreData,timeid)
+    except IndexError:
+        raise IndexError("Index Error in diffGraphsDic")
     except:
         graphs.popups.popup("Diffusion graphs not defined for this shot.timeid, using default",title="Warning")
         diffGraphsDic[0000](coreData,0000)
+        
     try:    
         nuGraphsDic[shotid](coreData,timeid)
+    except IndexError:
+        raise IndexError("Index Error in nuGraphsDic")
     except:
         graphs.popups.popup("Nu drag graphs not defined for this shot.timeid, using default",title="Warning")
         nuGraphsDic[0000](coreData,0000)

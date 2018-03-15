@@ -397,6 +397,7 @@ def run(shotid,timeid,runid,nbRun=True,IOL=True):
     
 if __name__== "__main__":
 
+
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 #    parser.add_argument("-shotid",type=int,help="DIII-D shot id")
 #    parser.add_argument("-timeid",type=str,help="DIII-D time id")
@@ -408,6 +409,12 @@ if __name__== "__main__":
                         default=True,help="Run NBeams")
     parser.add_argument("-IOL",type=str2bool,nargs='?',const=True,
                         default=True,help="Correct for IOL")
-#    parser.add_argument("-h","--help",help="Displays this help file")
-    args=parser.parse_args()
+    
+
+    try:
+        args=parser.parse_args()
+    except SystemExit as err:
+        if err.code==2:
+            parser.print_help()
+        sys.exit(0)
     run(argFunc(args))
