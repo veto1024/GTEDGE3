@@ -57,14 +57,6 @@ GTEDGE3 command line version can be run from the command line:
 	  -nbRun [NBRUN]  Run NBeams (default: True)
 	  -IOL [IOL]      Correct for IOL (default: True)
 
-## Usage
-
-# GTEDGE3.py
-GTEDGE3.py can be run from command line as follows:
-
-	python GTEDGE.py
-With this method, please ensure that
-
 ## File structure
 
 	.
