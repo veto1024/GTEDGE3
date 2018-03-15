@@ -380,8 +380,21 @@ def run(shotid,timeid,runid,nbRun=True,IOL=True):
 #
 #    MAIN PROGRAM as CLI Interface
 #
+#	usage: GTEDGE3_cli.py [-h] [-nbRun [NBRUN]] [-IOL [IOL]] shotid timeid runid
 #
-###############################################################################       
+#	positional arguments:
+#	shotid          DIII-D shot id
+#	timeid          DIII-D time id
+#	runid           DIII-D run id
+#
+#	optional arguments:
+#	-h, --help      show this help message and exit
+#	-nbRun [NBRUN]  Run NBeams (default: True)
+#	-IOL [IOL]      Correct for IOL (default: True)
+#
+#
+###############################################################################   
+    
 if __name__== "__main__":
 
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
