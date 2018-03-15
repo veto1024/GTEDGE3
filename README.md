@@ -19,13 +19,13 @@ Clone the repository to your local directory. GTEDGE2 comes in two code versions
 
 The following input files are needed to run GTEDGE2:
 
-Inputs\GT3Consts_shotid_timeid.csv               	   Plasma constant values from DIII-D
-Inputs\GT3NBI_shotid_timeid.csv							Neutral beam data for NBeams from DIII-D
-Inputs\GT3Profs_shotid_timeid.csv						Plasma profiles from DIII-D
-Inputs\GTEDGEsupp_shotid_timeid.csv						Supplementary data from GTEDGE Fortran 77 version. Soon to be deprecated.
-MaxPlasma\shotid_timeid_toplasma						Background plasma data needed for Max Hill code
-MaxPlasma\inputs\shotid_timeid_runid_X.txt				Boundary and plasma data needed for Max Hill code from DIII-D
-MaxPlasma\inputs\pshotid_timeid_runid_ersplrhob_sc.txt	Radial electric field file from DIII-D
+	Inputs\GT3Consts_shotid_timeid.csv               	   Plasma constant values from DIII-D
+	Inputs\GT3NBI_shotid_timeid.csv							Neutral beam data for NBeams from DIII-D
+	Inputs\GT3Profs_shotid_timeid.csv						Plasma profiles from DIII-D
+	Inputs\GTEDGEsupp_shotid_timeid.csv						Supplementary data from GTEDGE Fortran 77 version. Soon to be deprecated.
+	MaxPlasma\shotid_timeid_toplasma						Background plasma data needed for Max Hill code
+	MaxPlasma\inputs\shotid_timeid_runid_X.txt				Boundary and plasma data needed for Max Hill code from DIII-D
+	MaxPlasma\inputs\pshotid_timeid_runid_ersplrhob_sc.txt	Radial electric field file from DIII-D
 
 
 ## File structure
