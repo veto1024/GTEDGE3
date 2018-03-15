@@ -1,5 +1,5 @@
-# GTEDGE2
-GTEDGE2 Python Codebase
+# GTEDGE3
+GTEDGE3 Python Codebase
 # GTEDGE3 Codebase
 
 Georgia Tech GTEDGE2 Python-based Codebase for interpreting edge plasmas in tokamak fusion reactors
