@@ -27,6 +27,13 @@ The following input files are needed to run GTEDGE2:
 	MaxPlasma\inputs\shotid_timeid_runid_X.txt			Boundary and plasma data needed for Max Hill code from DIII-D
 	MaxPlasma\inputs\pshotid_timeid_runid_ersplrhob_sc.txt		Radial electric field file from DIII-D
 
+## Usage
+
+# GTEDGE3.py
+GTEDGE3.py can be run from command line as follows:
+
+	python GTEDGE.py
+With this method, please ensure that
 
 ## File structure
 
