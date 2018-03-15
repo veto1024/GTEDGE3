@@ -8,10 +8,10 @@ Georgia Tech GTEDGE3 Python-based Codebase for interpreting edge plasmas in toka
 
 ## Package dependencies
 
-Python 2.7
-Matplotlib
-SciPy
-Numpy
+* Python 2.7
+* Matplotlib
+* SciPy
+* Numpy
 
 ## Getting Started
 
