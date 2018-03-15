@@ -1,0 +1,145 @@
+#!/usr/bin/python
+
+###########################################################
+#
+#   Calculation of radial particle flux
+#
+#   iolFlag = 1 w/ IOL, 0 w/out IOL
+#
+#   6/12/2017
+#
+#   Particle flux and heat flux for deuterium implemented
+#   
+#
+###########################################################
+
+from math import *
+from physFuncs import cxcoolCalc,qieCalc
+
+def fluxCalc(data):
+    
+    gamma=[0.]*25
+    gammahat=[0.]*25
+    qheati=[0.]
+    qhatheati=[0.]
+    qheate=[0.]
+    gammaC=[0.]*25
+    gammaHeati=[0.]*25
+    gammahatHeati=[0.]*25
+    
+    aminor,elong,fracz,delma,xk,BCnbi,fluxheat,fheate,xmas1=data['aminor'],data['elong'],data['fracz'],data['delma'],data['xk'],data['BCnbi'],data['fluxheat'],data['fheate'],data['xmas1']
+    rhor,sNBI,xnuioni,zbar2,xnuioni,xni,xnC,xne,xti,xte,dlnn_dt,dlnwi_dt,xnuati,fionb,qnb=data['rhor'],data['Snbi'].values(),data['xnuioni'].values(),data['zbar2'].values(),data['xnuioni'].values(),data['xni'].values(),data['xnC'].values(),data['xne'].values(),data['xti'].values(),data['xte'].values(),data['dlnn_dt'].values(),data['dlnwi_dt'].values(),data['xnuati'].values(),data['fionb'].values(),data['qnb'].values()
+    
+    cxcool=cxcoolCalc(xni,xti,xnuati)
+    cmulteq=1.0                                                                # Why?
+    qie=qieCalc(xni,xnC,xne,xmas1,xte,xti,zbar2)
+    forbl=data['forbl'].values()
+
+    forbl[24]=forbl[23]
+    if iolFlag==False:
+        radminor = aminor*sqrt(0.5*(1+elong**2))
+        gamma[0] = BCnbi + xni[0]*xnuioni[0]*(1.+fracz*zbar2[0])*0.02*radminor
+        for n in range(1,24):
+            
+            radminor=aminor*sqrt(.5*(1+elong**2))
+            #########################################################
+            #  Particle flux calculation            
+            #########################################################
+            
+            srprim=sNBI[n]+((xni[n]+xni[n-1])/2)*xnuioni[n]*(1+fracz*zbar2[n])
+            
+            gamma[n]=(rhor[n-1]/rhor[n])*gamma[n-1]*1.+srprim*delma
+            
+        # Time-dependant corrections
+            
+        uni,yn,yi=0.,0.,0.
+        
+        for n in range(24):
+            uni=0.25*(xni[n]+xni[n+1])*(xti[n]+xti[n+1])*xk                    #Trace me
+            yn = yn + 0.5 *(dlnn_dt[n]+dlnn_dt[n+1])*xni[n]*delma
+        
+        gamma=[x-yn for x in gamma]
+        
+        ########################################################
+        #   Ion heat flux calculation
+        #   Differential slab geometry
+        ########################################################
+            
+        gammaHeati[24]=fluxheat                                                # investigate further
+        gammaHeati[24]=(1.-fheate)*fluxheat                                    # fheate simply given as 0.4 in GTEDGE
+        for n in range(23,-1,-1):
+            gammaHeati[n] = gammaHeati[n+1] + delma*(cxcool[n] + cmulteq*qie[n])
+            gammaHeati[n] = gammaHeati[n]
+        
+        # Time-dependent corrections
+            uni = 0.25*(xni[n]+xni[n+1])*xk*(xti[n]+xti[n+1])
+            dwiped_dt= 0.5*(dlnwi_dt[n]+dlnwi_dt[n+1])*1.5*uni 
+            
+            gammaHeati[n] = gammaHeati[n]+dwiped_dt*delma
+        
+        for n in range(23,-1,-1):
+            	uni = 0.25*(xni[n]+xni[n+1])*(xti[n]+xti[n+1])*xk
+             	yi = yi + 0.5*(dlnwi_dt[n]+dlnwi_dt[n+1])*1.5*uni*delma
+        
+        gammaHeati=[x - yi for x in gammaHeati]
+    
+        #############################################################
+        #
+        #  Flux calculations with IOL
+        #
+        ################################################################
+        
+        radminor=aminor*sqrt(.5*(1+elong**2))
+        gammahat[0]=BCnbi + xni[0]*xnuioni[0]*(1.+fracz*zbar2[0])*0.02*radminor
+
+
+        xponDB=[]
+        srprimDB=[]
+        for n in range(1,25):
+
+#            radiusInt=rhor[n]*radminor
+            #########################################################
+            #  Particle flux calculation            
+            #########################################################
+            xpon = exp(-2.*(forbl[n]-forbl[n-1]))           
+            srprim=sNBI[n]+((xni[n]+xni[n-1])/2)*xnuioni[n]*(1+fracz*zbar2[n])
+
+            xponDB.append(xpon)
+            srprimDB.append(srprim)
+            gammahat[n]=(rhor[n-1]/rhor[n])*gammahat[n-1]*xpon+srprim*delma
+            
+            
+        # Time-dependant corrections
+            
+        uni,yn,yi=0.,0.,0.
+        
+        for n in range(24):
+            uni=0.25*(xni[n]+xni[n+1])*(xti[n]+xti[n+1])*xk #Trace me
+            yn = yn + 0.5 *(dlnn_dt[n]+dlnn_dt[n+1])*xni[n]*delma
+        
+        gammahat=[x-yn for x in gamma]
+        
+        ########################################################
+        #   Ion heat flux calculation
+        #   Differential slab geometry
+        ########################################################
+            
+        gammahatHeati[24]=fluxheat
+        gammahatHeati[24]=(1.-fheate)*fluxheat
+        for n in range(23,-1,-1):
+            gammahatHeati[n] = gammahatHeati[n+1] + delma*(cxcool[n] + cmulteq*qie[n])
+            gammahatHeati[n] = gammahatHeati[n] - fionb[n]*qnb[n]*delma
+        
+        # Time-dependent corrections
+            uni = 0.25*(xni[n]+xni[n+1])*xk*(xti[n]+xti[n+1])
+            dwiped_dt= 0.5*(dlnwi_dt[n]+dlnwi_dt[n+1])*1.5*uni 
+            
+            gammhataHeati[n] = gammahatHeati[n]+dwiped_dt*delma
+        
+        for n in range(23,-1,-1):
+            	uni = 0.25*(xni[n]+xni[n+1])*(xti[n]+xti[n+1])*xk
+             	yi = yi + 0.5*(dlnwi_dt[n]+dlnwi_dt[n+1])*1.5*uni*delma
+        
+        gammahatHeati=[x - yi for x in gammahatHeati]  
+        
+    return gamma,gammahat,gammaHeati,gammahatHeati

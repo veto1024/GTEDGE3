@@ -1,0 +1,6 @@
+	SUBROUTINE XLOSS
+
+
+
+	  RETURN
+	  END

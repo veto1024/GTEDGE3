@@ -1,0 +1,99 @@
+$fastfrac
+Icur = 1.5
+Btor = -1.98
+radminor = 0.84
+rmajor = 1.75
+elong = 1.5
+enbi = 80.0
+erex(1) = 6.94e+3
+erex(2) = 6.60e+3
+erex(3) = 6.22e+3
+erex(4) = 5.87e+3
+erex(5) = 5.57e+3
+erex(6) = 5.31e+3
+erex(7) = 5.12e+3
+erex(8) = 4.91e+3
+erex(9) = 4.72e+3
+erex(10) = 4.53e+3
+erex(11) = 4.33e+3
+erex(12) = 4.16e+3
+erex(13) = 3.93e+3
+erex(14) = 3.70e+3
+erex(15) = 3.45e+3
+erex(16) = 3.22e+3
+erex(17) = 3.01e+3
+erex(18) = 2.88e+3
+erex(19) = 2.85e+3
+erex(20) = 2.83e+3
+erex(21) = 2.97e+3
+erex(22) = 3.26e+3
+erex(23) = 3.60e+3
+erex(24) = 4.13e+3
+erex(25) = 4.76e+3
+XTI(1) = 528.731
+XTI(2) = 520.989
+XTI(3) = 511.312
+XTI(4) = 499.374
+XTI(5) = 487.316
+XTI(6) = 477.04
+XTI(7) = 464.621
+XTI(8) = 452.025
+XTI(9) = 441.426
+XTI(10) = 428.625
+XTI(11) = 415.707
+XTI(12) = 404.922
+XTI(13) = 391.9
+XTI(14) = 378.873
+XTI(15) = 368.01
+XTI(16) = 354.987
+XTI(17) = 341.986
+XTI(18) = 329.027
+XTI(19) = 318.234
+XTI(20) = 305.321
+XTI(21) = 292.419
+XTI(22) = 281.683
+XTI(23) = 268.811
+XTI(24) = 255.948
+XTI(25) = 245.235
+
+$end
+trying IOL calc with reduced energy
+	A = 1.5
+	X = EPMIN(npsi,n)
+	VALUE = GAMI(A,X)
+	VALUE1= GAMMA(A)
+	floss(npsi,n) = (value1 - value)/value1
+	ffvalue1 = (2/3)*enbi**(3/2)
+	ffvalue2 = (2/3)*epmin(npsi,n)**(3/2)
+	ffvalue3 = sqrt(xpi)/2*erf(sqrt(enbi))-exp(-enbi)*sqrt(enbi)
+	ffvalue4 = sqrt(xpi)/2*erf(sqrt(epmin(npsi,n)))
+	1           -exp(-epmin(npsi,n))*sqrt(epmin(npsi,n))
+	ffloss(npsi,n) = (ffvalue1-ffvalue2-ffvalue3+ffvalue4)/(ffvalue1
+	1                 -ffvalue1-ffvalue3)
+
+	A = 2.0
+	X = EPMIN(npsi,n)
+	VALUE = GAMI(A,X)
+	VALUEv= GAMMA(A)
+	vloss(npsi,n) = (valuev - value)/valuev
+	fvvalue1 = (1/2)*enbi**(2)
+	fvvalue2 = (1/2)*epmin(npsi,n)**(2)
+	fvvalue3 = (1+enbi)*exp(-enbi)
+	fvvalue4 = (1+epmin(npsi,n))*exp(-epmin(npsi,n))
+	fvloss(npsi,n) = (fvvalue1-fvvalue2+fvvalue3-fvvalue4)/(fvvalue1
+	1                 +fvvalue3-1)
+
+	A = 2.5
+	EVALUE = GAMI(A,X)
+	EVALUE1= GAMMA(A)
+	eloss(npsi,n) = (evalue1 - evalue)/evalue1
+	fevalue1 = (2/5)*enbi**(5/2)
+	fevalue2 = (2/5)*epmin(npsi,n)**(5/2)
+	fevalue3 = 3*sqrt(xpi)/4*erf(sqrt(enbi))-exp(-enbi)*(enbi**(3/2)
+	1           +3*sqrt(enbi)/2)
+	fevalue4 = 3*sqrt(xpi)/4*erf(sqrt(epmin(npsi,n)))
+	1           -exp(-epmin(npsi,n))*(epmin(npsi,n)**(3/2)
+     2           +3*sqrt(epmin(npsi,n))/2)
+	feloss(npsi,n) = (fevalue1-fevalue2-fevalue3+fevalue4)/(fevalue1
+	1                 -fevalue3)
+

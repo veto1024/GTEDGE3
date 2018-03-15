@@ -1,0 +1,119 @@
+&EXPROFILE1
+		dlnn_dt(1) =       1.105e+00
+		dlnn_dt(2) =       8.676e-01
+		dlnn_dt(3) =       5.609e-01
+		dlnn_dt(1) =       2.290e-01
+		dlnn_dt(5) =      -1.244e-01
+		dlnn_dt(6) =      -4.974e-01
+		dlnn_dt(7) =      -8.543e-01
+		dlnn_dt(8) =      -1.337e+00
+		dlnn_dt(9) =      -1.838e+00
+		dlnn_dt(10) =     -2.332e+00
+		 dlnn_dt(11) =    -2.831e+00
+		dlnn_dt(12) =     -3.243e+00
+		dlnn_dt(13) =     -3.657e+00
+		dlnn_dt(14) =     -4.037e+00
+		dlnn_dt(15) =     -4.265e+00
+		dlnn_dt(16) =     -4.227e+00
+		dlnn_dt(17) =     -3.460e+00
+		 dlnn_dt(18) =    -2.519e+00
+		 dlnn_dt(19) =    -2.294e+00
+		dlnn_dt(20) =     -7.298e+00
+		dlnn_dt(21) =     -1.796e+01
+		dlnn_dt(22) =     -2.218e+01
+		dlnn_dt(23) =     -1.506e+01
+		dlnn_dt(24) =      6.062e-01
+		dlnn_dt(25) =      1.444e+01
+
+
+		 dlnwe_dt(1) =     7.167e-01
+		 dlnwe_dt(2) =     5.334e-01
+		 dlnwe_dt(3) =     3.076e-01
+		 dlnwe_dt(4) =     7.418e-02
+		  dlnwe_dt(5) =   -1.715e-01
+		 dlnwe_dt(7) =    -4.219e-01
+		 dlnwe_dt(8) =    -6.820e-01
+		 dlnwe_dt(9) =    -1.051e+00
+		  dlnwe_dt(10) =  -1.471e+00
+		dlnwe_dt(11) =    -1.931e+00
+		 dlnwe_dt(12) =   -2.490e+00
+		 dlnwe_dt(13) =   -3.044e+00
+		dlnwe_dt(14) =    -3.789e+00
+		dlnwe_dt(15) =    -4.731e+00
+		dlnwe_dt(16) =    -5.779e+00
+		dlnwe_dt(17) =    -6.804e+00
+		 dlnwe_dt(18) =   -7.223e+00
+		dlnwe_dt(19) =    -7.197e+00
+		dlnwe_dt(20) =    -7.761e+00
+		dlnwe_dt(21) =    -1.332e+01
+		 dlnwe_dt(22) =   -2.440e+01
+		 dlnwe_dt(23) =   -2.826e+01
+		 dlnwe_dt(24) =   -2.123e+01
+		 dlnwe_dt(25) =   -9.168e+00
+
+		dlnwi_dt(1) =        -7.822e+00
+		dlnwi_dt(2) =        -7.812e+00
+		dlnwi_dt(3) =        -7.813e+00
+		dlnwi_dt(4) =        -7.846e+00
+		dlnwi_dt(5) =        -7.907e+00
+		 dlnwi_dt(6) =       -8.010e+00
+		dlnwi_dt(7) =        -8.168e+00
+		dlnwi_dt(8) =        -8.427e+00
+		dlnwi_dt(9) =        -8.739e+00
+		dlnwi_dt(10) =       -9.082e+00
+		dlnwi_dt(11) =       -9.473e+00
+		dlnwi_dt(12) =       -9.835e+00
+		dlnwi_dt(13) =       -1.025e+01
+		dlnwi_dt(14) =       -1.071e+01
+		dlnwi_dt(15) =       -1.111e+01
+		 dlnwi_dt(16) =      -1.136e+01
+		dlnwi_dt(17) =       -1.102e+01
+		 dlnwi_dt(18) =      -1.060e+01
+		dlnwi_dt(19) =       -1.138e+01
+		dlnwi_dt(20) =       -1.836e+01
+		dlnwi_dt(21) =       -3.270e+01
+		dlnwi_dt(22) =       -4.214e+01
+		dlnwi_dt(23) =       -4.009e+01
+		dlnwi_dt(24) =       -3.175e+01
+		dlnwi_dt(25) =       -2.934e+01
+
+
+XNE (#/M^3), XT(EV), XL(M)---- SMOOTHED SPLINE FIT EXPERIMENTAL
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

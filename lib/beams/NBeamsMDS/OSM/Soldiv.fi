@@ -1,0 +1,259 @@
+	PARAMETER (I1=25,I2=59,L1=6,J1=3,J2=5,JE1=5,M1=10,M2=20,LL=26,
+     1	jz=2,j20=6)
+	COMMON/GEOM/ZX,RX,RSEP1,ZSEP1,RSEP2,ZSEP2,RDOME,PHIDOME,IOUTCASE,
+     2		IINCASE,XRING,DELN1,DELN2,EPDIV1,EPDIV2,DELLT1,DELLT2,
+     3		YPUMP1,YPUMP2,DELX1,DELX2,PHIRING1,XLPERP1,XLPERP2,XLPAR1,
+     4		XLPAR2,IOPTSN,R1,R2,PHITRAN,RINROUT,ZRING,RPUMP1,RPUMP2,
+	5		DELPF,GEOM12,GEOM11,GEOM21,GEOM22,HGEOM11,HGEOM12,HGEOM21,
+     6		HGEOM22,DELNS1,DELNS2,THETA1,THETA2,CPUMP12,CPUMP22,
+     7		CPUMP11,CPUMP21,EPOUT,EPIN,DIN12,DIN22,DIN11,DIN21,DOUT12,
+     8		DOUT22,DOUT11,DOUT21,XLWPL1,XLWPL2,XLUP1,XLWPF1,XLWPF2,
+     9		XLWSPL,zdome,xdome,divdepth1,divdepth2
+	COMMON/CORE/IPFLUX,FLUXPART,FLUXHEAT,XLPERP,
+	2			IOPTOHM,POHMIN,powsol
+	COMMON/LHTRAN/OMEGANT(J1),OMEGAT(J1),OMEGATT(J1),OMEGAVVT(J1),
+	2		OMEGANVT(J1),OMREQ25(J1),OMREQ24(J1),
+	3		OMREQ18(J1),OMRESTRONG(M2),OMREWEAKI(M2),OMREWEAKE(M2),
+     4		OMREQYZ(J1),OMREQXX(J1),OMREQYY(J1),OMREPAL(J1),
+     5		OMEGATE(J1),OMEGATI(J1),XKRE,DTE,DTI			
+      COMMON/PARAME/B,GAMSHEATH,IZINJECT,FZINJECT,IZINTRIN,FZINTRIN,FHE,
+     2  CHIBOHM,FBE,XLPAR,XMASS,XKAPPA,XK,FS,ALB,CHANGE,
+     3      AZTRACE,DELNMAX,DELNMIN,IOPTRAD,TAURES,PFUSION,ELONG
+     4  ,ioptdiv,TAV,FSHEATH,PFUSIONIN,
+	5  deld,CIMPRAT,AZINJECT,CIMPRATRACE,QZMULTDIV,QZMULTCORE,
+	6 PEDFAC,REDKAPPA,DNRAD,DQPERP,CHIRSOL,SOLNMULT,
+	7  SOLTMULT,IOPTPROF,FOUT,FUDGE,REDKAPPA2,TRIANG,ASYMPART,ASYMHEAT,
+	8	xenhance,ZHGHT,XDSEP,betacorrect
+	COMMON/GASNEUT/REFLECT,GAMDIV,F2NV,GAMR2PF,GAMR2PL              
+     	COMMON/WIDTHS/DELN,DEL,DELEA,DELV,IOPTSOL,
+	2              DELNV,DELRATNT,DELRATNV,DELNT,DELNS,DELT
+	COMMON/ATOM/SVATD,SVATSOL,SVIOND,SVIONSOL,SVTOTD,SVTOTSOL,SVREC,
+     2              SVELD,SVCXD,SVRECSOL,SVRECDIV,
+	3			  SVATDIV,SVIONDIV,SVRECD,SVELPED,SVCXPED,SVIONPED,
+	4			  SVTOTPED,SVTOTBAR,SVATPED,SVATBAR,SVIONBAR
+	COMMON/CALCULATED/xnd,XNSEP,D,XL,ALPHA,TSEP,VSEP,X1,
+     2             XNEL,DQAT,DQRAD,C2,TD,CSD,ITERN,Q95,HCONF,
+     3            COOLFRAC,FRACPERP,
+     4 RDIV,rat1,TPED,XNPED,DXLDIV,VDIV,FAC1,
+	6                  VSOL,TOD,FCRATD,FCRATDIV,GAMOUTPL,GAMOUTPF,
+     7				  FCRATSOL,COOLFRACAT,
+	8				  COOLFRACRAD,TODD,
+	9				  FCRATPED,AMASS,ITSTOP,
+	1		DQINSOL,DQRATDW,DQRATDP,DQRRECOM
+	COMMON/XSECT/SELN(I1),
+     3      SCX(I1),SEL(I1),SION(I1),RECOM(I1),
+     5      d0(I1),D1(I1),EN(JE1)
+	COMMON/XSECTDATA/ELAST(J20,J20),ELASTN(J20),CX(J20,J20),FREC, 
+     2 EION(J2,J20),IOPTLYMAN,REC(J2,J2),TINT(J20),ZNINT(J2)	 
+	COMMON/NEUT2/BETAG,FPF,FPD,THETA,FMOL,TSOL,XNOSOL,XNBAR,
+     2             XNOBAR,TBAR, XNDIV,XNODIV,TDIV,DELTB,DELPED,  
+     3             FUELPF,FUELPLIN,FUELMP,DELLT,DMAT,DELNIN,DNAT,	
+     4             XLPF,RWPF,RWPL,RWDP,DELPUMP,RPUMP,XNOD,DQIN,XNOPED,
+     5			 HNSOL,HNDIV,HVSOL,HVDIV,HTSOL,HTDIV,EIONDIV,EIONBAR,
+     6		     EIONPED,EIOND,EIONSOL,XNCOLDD,XNCOLDDIV,
+	7			 RMAJOR,xlwsol,RWSOL,DNSOL,DNDIV,
+	8			 TPLAS,XNPLAS,EPDIV,
+	9			 XNOSPL,ALPHACORE,ALPHASEP,VOD,
+     1			 XNOPEDXPT,XNOBARXPT,XNOPEDCOLD,ALPHASOL,
+	2			 XNOPEDCOLDXPT,RRATD,RRATDIV,RRATSOL,RRIOND,RRIONDIV,
+	3			 RRIONSOL,DQDIV,DQR,DQSOL,DND,DMSOL,DMDIV,DMR,
+	4			 VOPED,VOBAR,VOSOL,GAMOUTSPL,
+	5			 XNOCOLDBAR,DQRION,DQRAT,DQDIVION,DQDIVAT,DQSOLION,
+	6			 DQSOLAT,SPELLET,XNOCOLDSOL,YIONSOL,YIONDIV
+     7             ,YIONREC,GAMZEROM,GAMZERO,DIVDEPTH,IMAT,
+	8			 HDIS0,HDISP,FEX,IMOL,AD,EEX,TSOR,
+	9			 GAMDIV2PF,GAMDIV2PL,FLUXIONIN,FLUXNEUTIN,
+	1			 PION,FLUXSEPIN,TPEL,EIONPLAS,TPL,TPF,TSPL,FAC6,
+	2			 DNIN,DQNIN,TOD2PF,TOD2PL,GPF,GPL,AMU,RECYCLE,
+	3			 GEOM1,GEOM2,XPUMP,YPUMP,GAMPUMP,HGEOM1,
+     4			 HGEOM2,XSEP,ANGLE,YIONSOLXPT,YIONTBXPT,
+     5			 FUELMPREAL,SPELLETREAL,YALPHD,XLZRAD,ENHANCE,IZTRACE,
+     6			 YIONTB,SVCXBAR,SVELBAR,CPUMP1,CPUMP2,
+     8			 RNN,FRACWALL,DQION,
+	9			 XSEPIN,TNSOL,TNSOLA,WALLFRAC, 
+	1			 FUELPLOUT,APF1,APL1,APL2,DELPUMP1,DELPUMP2
+     2			 ,GAMPUMP1,GAMPUMP2,XNOD1,XNOD2,XNODIV1,XNODIV2,
+     3			XNOPF1,XNOPF2,XNOPL1,XNOPL2,wallmult,
+     4			iopttheta,thetain,xnobarav,xnocoldbarav     	
+	common/trouble/REABSORBD,REABSORBDIV,REABSORBSOL,REABSORBCOR,
+	1			delxreal,delx,IOPTSOLN,iopteln,wtxpt,xnsol,xnsepex	
+
+	COMMON/PEDBAR/BFIELD,NBAR,NPED,GRADTBAR(j2),GRADTPED,GRADNBAR(j2),
+     2	GRADNPED,CHIRCORE(J2),XNU,ZEFF,Z0,DENLIMMP(M2),DENLIMXPT(M2),
+     3	CFZINJ,CFZINT,XLT,XLN,CHIBAR,ERAD,VTHET,VPHI,VRAD,XNUBAR,XLQ,
+     4	XLE,XLVTHET,IOPTPED,CPHI,XLVPHI,RHOPED,RHOBAR,CURSEPMP,
+     5	CSBAR,XNPEDAV,CURSEP,FRACXPT,GRADTPEDIS,XLTBAR,FCOND,CHIRC,
+     6	CHIRTB,XNRHOPED,JOPTPED,XLNBAR,JJOPTPED,IOPTGRAD,CHIRMARF,
+     7	CBALLOON,DRCORE,CHIRTEMP,RECFRAC,DREDGE,APED,CHIREXP(J2),
+     8	TPEDAV,GRADTEBAR(J2),XNPEDEX,XNTBEX,TPEDEX,TTBEX,TTBEXI,
+     9	TTBEXE,TPEDEXI,TPEDEXE,TSEPEXI,TSEPEXE,CFZINTTB,CFZINJTB,
+     1	GROW1MP(M2),GROW2MP(M2),GROW3MP(M2),GROW1XP(M2),GROW2XP(M2),
+     2	GROW3XP(M2),GROW1AV(M2),GROW2AV(M2),GROW3AV(M2),CHIRTBI,
+     3	CHIRTBE,IOPTPART,HRAT,DLMARFXPT,DLMARFMP,RATNLINEAV,FACA,BIA,
+	4	IOPTPEDWIDTH,CPED,C89,H89,CHEI,FION,CHITBE,CHITBI,TESOL,CNE,
+	5	XLTEBAR,XLTIBAR,BALP,RXLTIXLTE,xlmhd,CPINCH,VPINCH,DTBI,IOPTLN
+     6	,CIE,HEATFRACE,IOPTPINCH,XLNBAR1,XLNBAR2,CPED2,TISOL,TEPED,
+	7	TIPED,CPED1,JOPTPED2,fluxheatianom,fluxheateanom,IGRADPED,FI,
+	8	XE,XI,C89N, OMEGTI,OMEGTE,OMEGTIN,OMEGTEI,XMARFCAL,IMARFE,
+	9	IOPTCONF,PELME,PELMI,ELMINDEXE,ELMINDEXI,WE0,WI0,HINDEXE,
+	1	HINDEXI,ALPHE,ALPHI,CC,ISHAPE,TIBAR,TEBAR,FSHAPE,IDRAKE,
+	2	SHEARQ,CBALL,FESEP,FISEP,QCRIT,QI,QCRITFIT,CHITBLI,CHITBLE,
+	3	QLH,QHL,QRLH,QRHL,SHEAR0,SHEAR,XJBS,GAMN,GAME,GAMIA,XNATOM,ASS,
+	4	XNUISEPEP,TRIANGAV,CSHEAR,XLMHDWES,XLMHDMIY,BALWES,BALMIY,
+     5	SHEARWES, SHEARMIY,XJBSWES, XJBSMIY,BALNOM,PCRIT,IOPTTAUE,
+     6	H98,IOPTTRAN,WIDTHN,MODPED,CMHD,CMHDEFF,cmhdmax,ccrit,
+     7	WIDTHNX,WIDTHTEX,WIDTHTIX,XLNBARX,presstb,dpdrcrit,
+     8	XLTEBARX,XLTIBARX,ioptq95,cmfp,PSEP,ylz
+
+	common/expinterp/DEXP,CHIEXPE,CHIEXPI,xlpexp,deltran,deltap11,
+     1	deltap12,deltap2,cmhdex,ccritex3,cmfpex,xlpth1,xlpth2,deltap3,
+     2	deltap4,ccritex4,dln_dt,dlnw_dt,wmhd,fluxheati,fluxheate,
+	3	xnbarx,tibarx,tebarx,DQE1,DQI1,DG1,DN_DT,DW_DT,pradcorex,
+	4	zimpmean,alphai,alphae,teintop,tiintop,xnintop,xltitop,
+	5	xltetop,pedrho,rhor(ll),chitop,chetop,alphaion(ll),alphael(ll)
+	6	,qedge(ll),dlnped_dt,dlnpped_dt
+     
+	COMMON/NEUTF/FNO(I2),FNCOLD(I2),XNO(I2),NNEUT
+	
+	COMMON/TEMP/TE(I2),DLZDT(I2),RHO(I2),ALPHAT,RAD,T0,RSYN,IPROF,
+     2      AMINOR,CHIREDGE,FZ1,NZIMP1,DHDT(I2),HEAT,PB(I2),PBEAM,ENBI,
+     3      RHOGAUSS,SIGMA,DEN1(J2),JOBNO,FZ2,NZIMP2,PLASMACUR,POHM(I2),
+	4	  CURDEN(I2),ZEFFC,DELC,PRAD,PINSEP,FHEAT,FPART,JIT,PFUS(I2),
+	5	  HN,PIONCORE	
+	COMMON/TDENS/SN,ST,RADN,RADN2,XLZC(I2),XNAV,ALPHAN,XNJ0,TJ0,AP,VP,
+     2	  DPERP,DEN2PP(J1),DEN2PM(J1),DEN2MP(J1),DEN2MM(J1),XNEUT(I2)
+     3      ,TAUP,RCOEF,ALPHAT1,ALPHAT2,A1,A2,RADMULT,PSYN,TAVMULT,TAUN,
+     3      XNC(I2),IOPT,DENOMC,DENOM1,XN0,SORN,FLUXIN,ITERC,XNCTRPED,
+     4	  TCTRPED,TAUE,PIMP,PBREM,HOHM,FRACRAD,FRACBREM,FRACIMP,POHMH, 
+     5	  TAURATIO,PFUEL,FRACFUEL,FRACATOM,FRACSOL,FRACRADIV,FRACTOT
+	COMMON/EDITS/RPARTT,RPARTN,RPARTP,RPARTTC,RPARTC,PUMPFRAC,PUMPRATE
+	2      ,FRACPLASDP 
+	COMMON/XPT/YXPT,DELXPT,AXPT,FINXPT,ALPHAXPT,ALPHAX,FLUXSEPINXPT,
+     2       FLUXNEUTINXPT,FLUXIONINXPT,TXPT,XNXPT,RXPT,TRXPT,YIONXPT,
+     3       VOXPT,RECXPT,EIONXPT,FNCOLDX(I2),FNOXPT(I2),XNOCOLDBARXPT
+     4	  ,XNOCOLDSOLXPT,ALPHASOLXPT,ALPHASEPXPT,CURSEPXPT,XNOXPT(I2),
+     5	  ,FCRATSOLXPT,FCRATBARXPT,FCRATPEDXPT   	 
+
+	COMMON/STABDIV/RADDIV,FREQIONREC,FREQATD,FREQIOND,FREQRECD,FREQAT,
+	2       XKLL,DFREQATDT,DFREQIONDT,FREQIONE,FREQION,RAD1,FREQATM,
+     3	   FREQIONM,CONDUCTI,XMSOL,DFREQATDTM,DFREQIONDTM,DFREQIONDTE,
+     4	   DFREQRECDT	 
+ 
+	COMMON/RETEMP/TDPF,TDPL,VCOLD,VCOLDXPT,XNOSOLXPT
+	COMMON/THRESHOLD/CHIXPI,CHIXPE,PTHRESHE,PTHRESHI,XKREDGE
+ 	COMMON/EDGEDIST/YNUION(LL),YNI(LL,jz),YNO(LL),DENS(LL),DELM,TEP,
+	1		fluxpartsum,cosden(JZ),XNI(JZ),ALPHT,ALPHV,ALPHN,EB,
+     2		sinden(JZ),bthet,bphi,atnum(JZ),temp(JZ),xnustar(JZ,JZ),
+     3		vth(JZ),IGSCL,VPED,VPHEXP,XNE0,IVISC,INU,IZEFF,
+     4		ZIMP,ZION,AIMP,AION,ERADCOM,EPHIA,FP,XLNBAREX,VPHIPEDX,
+     5		QSAFE,EQ,XNOCOLDAV,TRAN,TFAC,ABEAM,BT,RMINOR,XLT1(LL),
+     6		XNUIONSTAR(JZ),XLV(JZ),BETAD(JZ),XMTOR(JZ),xlna(JZ),
+     7		XNUDRAG(JZ),DIF(LL,jz,jz),ACOEF(LL,jz),GAMEFF(LL),XMAS(JZ)
+     8		,XNUC(JZ,JZ),vphia(JZ),thetw(JZ),VTHETA(JZ),xlta(JZ),
+     9		vrada(JZ),GAMION(LL,jz),XNUATI(ll),rtan,f(jz),PRESS(JZ),
+     1		XNUIONI(LL),sindeno(ll),cosdeno(ll)		,xmpol(jz),
+     2		IOPTEDGE,PHITE,IGRAD,XLT11,XLV1,FRACZ,TEED(LL),TIED(LL),
+	3		YLTIBARX,YLNBARX,YLVBARX,XLVA(JZ),alphain,VPHIAPEDX,
+	4		SVIONA(LL),DELNA,DELMA,ERADA(LL),VELTHET1(LL),VELTHET2(LL)
+     5		,ERADCOMB,SVATA(LL),XNUDRAGATOMIC(LL),BEAMSUM(LL),
+     6		PRESSUM(LL),VPOLSUM(LL),DRAGSUM(LL),YNUDRAG1(LL),
+     7		YNUDRAG2(LL),FLUXINNEUT(LL),xnuionb(ll),thetw1(ll),
+     8		thetw2(ll),vrad1(ll),vrad2(ll),ynocold(ll),vpin(ll,jz),
+	9		vtor1(ll),vtor2(ll),cb1(i1,jz),cb2(i1,jz),cb3(i1,jz),
+	1		vpinchi(ll),coefp(ll),diffA(ll),ratnu(ll),it,xlnm(ll),
+	2		xlpm(ll),xltmi(ll),rhoti(jz),gamheat(ll),chiion(ll),
+	3		xlradz(ll),xfrac,enh,tormom(ll),fricmom(ll),eph(ll),
+	4	dragmom(ll),xnudraggyro(ll),ynuioni(ll),xlvm(ll),torv(ll),
+	5		yltex,joptedped,ti(ll),tel(ll),xlnim(ll),xlnzm(ll),
+     6		xltim(ll),frazimp(ll),gamheati(ll),gamheate(ll),dii(ll),
+     7	dzz(ll),dzi(ll),diz(ll),xnuionz(ll),vpinchz(ll),xltzm(ll),
+	8		xltem(ll),yltebarx,chiel(ll),press1(ll),press2(ll),
+	9		xmomtor1(ll),vphiex1(ll),vphiex2(ll),presvth1,vphivth1,
+	1	zbar2(ll),SHEARM,CHIETAI(LL),CHIEETG(LL),dedr,XMOMTOR2(LL),
+     2		sheare(ll),ioptshear,ep,pinert(ll),ioptvphi,ioptpinchi,
+     3		xnudraganom(jz),ynuati(ll),xlvm2(ll),vtor1old(ll),
+     4		cosion(ll),sinion(ll),thetwid1(ll),ioptvdif,ioptxlvm,jt,
+	5	rhot1(ll),eradfb(ll),sheareconst,chichos(ll),shearfac(ll),
+	6		xnuei,xnueistar,OMII(JZ),chiedw(ll),fheate,qnb(ll),
+	7		phimom(ll),teedge,tiedge,fionb(ll),qnbi(ll),qnbe(ll),kk,
+	8		chinc(ll),cncmult,cetaimult,cetgmult,cedwmult,ioptran,
+	9		coldno(ll),gy(ll),cosimp(ll),sinimp(ll),thetwid2(ll),
+	1		pedrhote,pedrhoti,rhotein,rhotiin,erad6(ll),ylti,ylte,
+	2		xnud1(ll),ioptdrag,ioptzerodrag,xnuc12(ll),xnuc21(ll),
+	3		xnuc11(ll),xnuc22(ll),xnudzero(ll),
+	3		xnud2(ll),iopterad,ioptapproach,xnudragvis1(ll),
+	4	xnudragvis2(ll),erad3(ll),vthexp(ll),ioptvthet,eradfb1(ll),
+	5		ioptranscoef,erex(ll),ioptexpdata,xnesepreal,vtheory(ll),
+     6		pedrhon,rhonin,yln,xlntop,chihme,chihmi,ETA01HAT(LL),
+	7		ETA02HAT(LL),VTHTSIN(JZ,LL),VTHTCOS(JZ,LL),AV(L1,L1,ll),
+	8		BV(L1,L1,ll),SV(L1,ll),omegt(ll,L1),omegtsep1,omegtsep2,
+     9		SORSIN(JZ,LL),SORCOS(JZ,LL),vpol(jz,ll),eradfbnew(ll),
+	1		OMEGTSEP1C,OMEGTSEP2C,OMEGTSEP1S,OMEGTSEP2S,eta401(ll),
+     4		eta402(ll),eta001(ll),eta002(ll),
+     5		xlncm1(ll),xlnsm1(ll),xlncm2(ll),xlnsm2(ll),eradfb2(ll),
+	7		anomdrag(jz),etanom01(ll),etanom02(ll),
+     8		xlanom01(ll),xlanom02(ll),xnudtot1(ll),xnudtot2(ll),
+     9		zne(ll),thetinert(jz),xnudragyro1(ll),xnudragyro2(ll),
+	1		brack(ll),xnuinert1(ll),xnuinert2(ll),xnudraganom1(ll),
+	2		xnudraganom2(ll),chierb(ll),erfb2(ll),erfb1(ll),anomom(ll)
+	3		,dragfreq(ll),xnudraganomal(ll),vradanom(ll),
+     4	VPHICOS(Jz,ll),VPHISIN(Jz,ll),torvel(ll,jz),xnudragp(ll,jz),
+	5	ynuinert(ll,jz),chiphi(ll,jz),coefv(ll,jz),yy1(ll),yy2(ll),
+	6	ss1(ll),ss2(ll),veltor(ll,jz),xnudraganoma1(ll),
+     7		xnudraganoma2(ll),apol1(ll),apol2(ll),bpol1(ll),bpol2(ll),
+	8		spol1(ll),spol2(ll),SPOLA(LL,JZ),SPOLB(LL,JZ),
+     9	xmompol(ll,jz),delbsep,xnudragrip(ll,jz),etai(ll),etae(ll),
+	1	ylntop,COULOG(JZ,JZ),XNUEIAST(LL),psepthe,psepthi,psepe,psepi,
+	2	ylamdae,ylamdai,chietair0(ll),chietaiw0(ll),chida(ll),
+	3	chitemw(ll),chitemk(ll),chii0,chie0,xkrtherm,delchii(ll),
+	4	delchie(ll),omegthi(ll),omegthe(ll),sourceion(ll),diffii(ll),
+	5	diffiz(ll),diffzz(ll),diffzi(ll),coefy(ll),bigM(ll),gnu(ll),
+     6	fluxpal(ll),chiepale2(ll),surfA(ll),epower(ll),dlnn_dt(ll),
+	7	dlnwe_dt(ll),dlnwi_dt(ll),chieneo(ll),jdrag,vtor0(ll),
+	8	xnudinf1(ll),xnudinf2(ll),vftor0(ll),vftor1(ll),vftor2(ll),
+	9	fpol_main(ll),vpol_main(ll),vpol_imp(ll),fpol_col(ll),
+	1	fpol_shaing(ll),fpol_imp(ll),fpol1(ll),fpol2(ll), vpol3(ll),
+	2	vpol4(ll),vvelthet1(ll),vvelthet2(ll),xxnudragyro1(ll),
+	3  xxnudragyro2(ll),ipolopt,vpol5(ll),vpol6(ll),fpolimp_shaing(ll),
+	4	ioptpol,xnuatomstar(jz),xlphim(ll),vpcal1(ll),vpcal2(ll),
+	5	vths1(ll),vths2(ll),vtkdg1(ll),vtkdg2(ll),chiepale3(ll),
+	6	chiepale4(ll),shearho(ll),starnue(ll),dedredge(ll),
+	7	chieetg1(ll),chietaiw2(ll),ysetg(ll),fsetg(ll),gamaxitg(ll),
+	8	gamaxetg(ll),omexb(ll),chieetg2(ll),critetg(ll),crititg(ll),
+	9	fsitg(ll),ysitg(ll),fsdrb(ll),ysdrb(ll),dEdrnew(ll),
+	1	shearhonew(ll),chietair2(ll),chieetg0(ll),chierb0(ll),
+     2	chida0(ll),fsda(ll),chitemw0(ll),chitemk0(ll),chietair1(ll),
+	3	chietaiw1(ll),etaithresh(ll),gamitg(ll),chietaiw9(ll),
+	4	chitemw9(ll), omreali(ll),omreale(ll),gamtem(ll),
+	5	etaethresh(ll),chietaih0(ll),chietaih1(ll),chietaih2(ll),
+	6	chietai2h0(ll),chietai2h1(ll),chietai2h2(ll),chich(ll),
+	7	chiedw0(ll),chiedw1(ll),chiedw2(ll),chiitgx(ll),
+	8	chitemw91(ll),chietaiw91(ll),angthet(I2),ioptpot,epotcos,
+	9	epotsin,vpolhs(ll),ephi(LL),erav(ll),delTAthetx
+
+	COMMON/PROFILE/EXNE(LL),XLNE(LL),XTE(LL),EXLTE(LL),
+     1 	EXLTI(LL),xchii(ll),xchie(ll),exlv(ll),econve(ll),econvi(ll),
+	2	chiepale(ll),ssi95,xchii2(ll),xchii3(ll),xchie2(ll),xchie3(ll)
+	3	,dmag(ll),chiemag(ll),epot(ll),cpot(ll),spot(ll),estatpot(ll),
+	4	EORBL(LL),xmorbl(LL),FORBL(LL),xchiiorb(ll),xchii15(ll),
+	5	xchiiorb15(ll),ioptxtran,ioptionorb,morbl(LL),XTI(LL),
+	6    NBIreturn(LL)
+	    
+	COMMON/EQUIL/SEGEOM
+
+
+
+
+C         I1 = # PARALLEL MESH INTERVALS MAXIMUM, L1 = MAX # LEGENDRE MOMENTS
+C         J1 = # NEUTRAL TEMPERATURE OR DENSITY INTERPOLATION POINTS
+C              FOR XSECT DATA
+C		J2 = # ION & ELECTRON TEMPERATURE INTERPOLATION POINTS FOR
+C		     XSECT DATA
+
+
+      
+	
+
+     
+
+	

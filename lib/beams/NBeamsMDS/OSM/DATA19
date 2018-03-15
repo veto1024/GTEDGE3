@@ -1,0 +1,250 @@
+&EXPROFILE1
+	exne(1) =      3.113e19
+	exne(2) =      3.100e19
+	exne(3) =      3.084e19
+	exne(4) =      3.067e19
+	exne(5) =      3.050e19
+	exne(6) =      3.033e19
+	exne(7) =      3.018e19
+	exne(8) =      3.000e19
+	exne(9) =      2.981e19
+	exne(10) =      2.963e19
+	exne(11) =      2.943e19
+	exne(12) =      2.927e19
+	exne(13) =      2.908e19
+	exne(14) =      2.889e19
+	exne(15) =      2.868e19
+	exne(16) =      2.845e19
+	exne(17) =      2.818e19
+	exne(18) =      2.772e19
+	exne(19) =      2.628e19
+	exne(20) =      2.276e19
+	exne(21) =      1.777e19
+	exne(22 =       1.362e19
+	exne(23) =      1.116e19
+	exne(24) =      8.940e18
+	exne(25) =      7.162e18
+
+/
+&EXPROFILE2
+	 xlne(1) =    4.432e-01
+	 xlne(2) =    4.439e-01
+	 xlne(3) =    4.166e-01
+	 xlne(4) =    4.024e-01
+	 xlne(5) =    3.884e-01
+	 xlne(6) =    3.746e-01
+	 xlne(7) =    3.633e-01
+	xlne(8) =     3.499e-01
+	xlne(9) =     3.366e-01
+	 xlne(10) =    3.235e-01
+	xlne(11) =     3.110e-01
+	 xlne(12) =    3.012e-01
+	 xlne(13) =    2.902e-01
+	xlne(14) =     2.792e-01
+	xlne(15) =     2.634e-01
+	xlne(16) =     2.193e-01
+	xlne(17) =     1.279e-01
+	xlne(18) =     5.554e-02
+	xlne(19) =     1.967e-02
+	xlne(20) =     9.691e-03
+	 xlne(21) =    6.846e-03
+	 xlne(22) =    6.606e-03
+	xlne(23) =     6.913e-03
+	  xlne(24) =   6.855e-03
+	xlne(25) =     6.554e-03
+
+exlv(1) = .146
+exlv(2) = .143
+exlv(3) = .139
+exlv(4) = .133
+exlv(5) = .126
+exlv(6) = .122
+exlv(7) = .117
+exlv(8) = .112
+exlv(9) = .106
+exlv(10) = .101
+exlv(11) = .095
+exlv(12) = .090
+exlv(13) = .086
+exlv(14) = .082
+exlv(15) = .078
+exlv(16) = .073
+exlv(17) = .069
+exlv(18) = .066
+exlv(19) = .060
+exlv(20) = .054
+exlv(21) = .049
+exlv(22) = .044
+exlv(23) = .039
+exlv(24) = .036
+exlv(25) = .032
+/
+
+&EXPROFILE4
+	Exlte(1) = 1.995e-01
+	Exlte(2) = 1.974e-01
+	Exlte(3) = 1.944e-01
+	Exlte(4) = 1.908e-01
+	Exlte(5) = 1.863e-01
+	Exlte(6) = 1.805e-01
+	Exlte(7) = 1.743e-01
+	Exlte(8) = 1.647e-01
+	Exlte(9) = 1.526e-01
+	Exlte(10) = 1.376e-01
+	Exlte(11) = 1.203e-01
+	Exlte(12) = 1.044e-01
+	Exlte(13) = 8.460e-02
+	Exlte(14) = 6.584e-02
+	Exlte(15) = 4.930e-02
+	Exlte(16) = 3.587e-02
+	Exlte(17) = 2.568e-02
+	Exlte(18) = 1.926e-02
+	Exlte(19) = 1.356e-02
+	Exlte(20) = 9.534e-03
+	Exlte(21) = 6.761e-03
+	Exlte(22) = 4.880e-03
+	Exlte(23) = 3.930e-03
+	Exlte(24) = 3.025e-03
+	Exlte(25) = 2.568e-03
+/
+&EXPROFILE5
+	 Xti(1) = 1.349e3
+	 Xti(2) = 1.337e3
+	 Xti(3) = 1.321e3
+	 Xti(4) = 1.303e3
+	 Xti(5) = 1.283e3
+	 Xti(6) = 1.262e3
+	 Xti(7) = 1.242e3
+	 Xti(8) = 1.217e3
+	 Xti(9) = 1.189e3
+	 Xti(10) = 1.158e3
+	 Xti(11) = 1.124e3
+	 Xti(12) = 1.094e3
+	 Xti(13) = 1.055e3
+	 Xti(14) = 1.012e3
+	 Xti(15) = 9.666e2
+	 Xti(16) = 9.171e2
+	 Xti(17) = 8.638e2
+	 Xti(18) = 8.164e2
+	 Xti(19) = 7.557e2
+	 Xti(20) = 6.908e2
+	 Xti(21) = 6.215e2
+	 Xti(22) = 5.476e2
+	 Xti(23) = 4.824e2
+	 Xti(24) = 3.997e2
+	 Xti(25) = 3.119e2
+
+/
+EXPROFILE6
+	Exlti(1) = 2.185e-01
+	Exlti(2) = 1.969e-01
+	Exlti(3) = 1.745e-01
+	Exlti(4) = 1.544e-01
+	Exlti(5) = 1.366e-01
+	Exlti(6) = 1.207e-01
+	Exlti(7) = 1.089e-01
+	Exlti(8) = 9.620e-02
+	Exlti(9) = 8.491e-02
+	Exlti(10) = 7.488e-02
+	Exlti(11) = 6.601e-02
+	Exlti(12) = 5.937e-02
+	Exlti(13) = 5.215e-02
+	Exlti(14) = 4.562e-02
+	Exlti(15) = 3.971e-02
+	Exlti(16) = 3.444e-02
+	Exlti(17) = 2.982e-02
+	Exlti(18) = 2.636e-02
+	Exlti(19) = 2.247e-02
+	Exlti(20) = 1.875e-02
+	Exlti(21) = 1.524e-02
+	Exlti(22) = 1.206e-02
+	Exlti(23) = 9.670e-03
+	Exlti(24) = 7.133e-03
+	Exlti(25) = 5.001e-03
+/
+&EXPROFILE3	
+	     xte(1) = 998
+	     Xte(2) = 989.
+	     Xte(3) = 978.
+	     Xte(4) = 967.
+	     Xte(5) = 956.
+	     Xte(6) = 944.
+	     Xte(7) = 935.
+	     Xte(8) = 923.
+	     Xte(9) = 911.
+	     Xte(10) = 898.
+	     Xte(11) = 884.
+	     Xte(12) = 871.
+	     Xte(13) = 852.
+	     Xte(14) = 830.
+	     Xte(15) = 802.
+	     Xte(16) = 766.
+	     Xte(17) = 720.
+	     Xte(18) = 670.
+	     Xte(19) = 600.
+	     Xte(20) = 597.
+	     xte(21) = 506.
+	     Xte(22) = 403.
+	     Xte(23) = 297.
+	     Xte(24) = 214.
+	     Xte(25) = 78.2
+
+/
+&EXPROFILE7
+	nbdep(1) = 0.0
+	nbdep(2) = 0.0
+	nbdep(3) = 0.0
+	nbdep(4) = 0.0
+	nbdep(5) = 0.0
+	nbdep(6) = 0.0
+	nbdep(7) = 0.0
+	nbdep(8) = 0.0
+	nbdep(9) = 0.0
+	nbdep(10) = 0.0
+	nbdep(11) = 0.0
+	nbdep(12) = 0.0
+	nbdep(13) = 0.0
+	nbdep(14) = 0.0
+	nbdep(15) = 0.0
+	nbdep(16) = 0.0
+	nbdep(17) = 0.0
+	nbdep(18) = 0.0
+	nbdep(19) = 0.0
+	nbdep(20) = 0.0
+	nbdep(21) = 0.0
+	nbdep(22) = 0.0
+	nbdep(23) = 0.0
+	nbdep(24) = 0.0
+	nbdep(25) = 0.0
+
+/
+
+qedge(1) = 2.89
+qedge(2) = 2.96
+qedge(3) = 3.03
+qedge(4) = 3.09
+qedge(5) = 3.16
+qedge(6) = 3.23
+qedge(7) = 3.32
+qedge(8) = 3.42
+qedge(9) = 3.51
+qedge(10) = 3.61
+qedge(11) = 3.70
+qedge(12) = 3.79
+qedge(13) = 3.89
+qedge(14) = 3.98
+qedge(15) = 4.12
+qedge(16) = 4.25
+qedge(17) = 4.39
+qedge(18) = 4.42
+qedge(19) = 4.44
+qedge(20) = 4.47
+qedge(21) = 4.50
+qedge(22) = 4.55
+qedge(23) = 4.57
+qedge(24) = 4.60
+qedge(25) = 4.65
+
+XNE (#/M^3), XT(EV), XL(M)---- SMOOTHED SPLINE FIT EXPERIMENTAL
+	
+

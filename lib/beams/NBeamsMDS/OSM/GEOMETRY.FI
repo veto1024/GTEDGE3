@@ -1,0 +1,10 @@
+c----------------------FILE locGeom.inc------------------------------
+
+c/    This file contains declarations for the variables that 
+c/    characterize the straightline geometry in the calculation
+c/    of the transmission probabilities.
+
+      integer nph_pnts, i_geom
+      real L_i, L_j, L_perp, l_mfp, theta_ij, alpha_j
+      common /rcgeom/nph_pnts, i_geom, L_i, L_j, L_perp, l_mfp, 
+     .    theta_ij, alpha_j

@@ -1,0 +1,28 @@
+$nbin
+nbeams = 1
+inbfus = 1
+amb = 2.0
+zbeam = 1.0
+ebeam = 76.77
+pbeam = 4.42
+rtang = 1.051
+nbshape = 1
+bwidth = 0.12
+bheigh = 0.48
+bgaussR = 0.066
+bgaussZ = 0.18
+bzpos = 0.0
+nbptype = 1
+maxiter = 2
+pwrfrac(1,1) = 0.76 0.13 0.11
+a = 0.597
+r0 = 1.686
+b0 = 2.00
+n = 51
+e0 = 1.302
+ea = 1.803
+shft0 = 0.0228
+nion = 2
+aion = 2.0 12.0
+zion = 1.0 6.0
+$end
