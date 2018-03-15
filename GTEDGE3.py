@@ -17,7 +17,7 @@ from MaxPlasma import plasma
 from scipy.interpolate import UnivariateSpline
 from numpy import interp, pi
 from math import sqrt
-import inspect
+import inspect,datetime,warnings
 
 
 def maxDebug(coreData):
@@ -52,17 +52,6 @@ def customwarn(message, category, filename, lineno, file=None, line=None):
 ###############################################################################
 
 if __name__== "__main__":
-
-    errLog=open("GTEDGE3warn.log","a+")
-    errLog.write("\n")
-    errLog.write("Time: %s",datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%s"))
-    errLog.write("%s.%s.%s  nbRun=%s IOL=%s \n" % (str(shotid),str(timeid),str(runid),str(nbRun),str(IOL)))
-    
-    sys.stderr=errLog
-    warnings.simplefilter('always', UserWarning)
-    warnings.simplefilter('always', RuntimeWarning)
-    warnings.showwarning=customwarn
-    
     
     ###########################################################################
     #
@@ -76,37 +65,54 @@ if __name__== "__main__":
     #   Input/GT3NBIConsts_144977_3000                  NBI-Relevent Constants
     #
     ############################################################################
-#
+
 #    shotid=118888
 #    timeid=1525
 #    runid="r88"
 #    nbRun=True
+#    IOL=True
     
 #    shotid=118888
 #    timeid=1570
 #    runid="r88"
 #    nbRun=True
+#    IOL=True
 	
 #    shotid=118890
 #    timeid=1515
 #    runid="r90"
 #    nbRun=True
+#    IOL=True
     
     shotid=118890
     timeid=1560
     runid="r90"
     nbRun=True	
+    IOL=True
 #    
 #    shotid=166606
 #    timeid=1950
 #    runid="j8099"
 #    nbRun=True
+#    IOL=True
     
 #    shotid=144977
 #    timeid=3000
 #    runid="j3000"
 #    nbRun=True
+#    IOL=True
+    
+    errLog=open("GTEDGE3warn.log","a+")
+    errLog.write("\n")
+    errLog.write("Time: %s",datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%s"))
+    errLog.write("%s.%s.%s  nbRun=%s IOL=%s \n" % (str(shotid),str(timeid),str(runid),str(nbRun),str(IOL)))
+    
+    sys.stderr=errLog
+    warnings.simplefilter('always', UserWarning)
+    warnings.simplefilter('always', RuntimeWarning)
+    warnings.showwarning=customwarn
 
+    
     fileNames=funcs.dataCat.CatalogueCall(shotid,timeid,runid)
 
     

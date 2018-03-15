@@ -67,17 +67,6 @@ def maxDebug(coreData):
     funcs.dataGen.csvDump("fioldebug.csv",maxiandic)
 
 def run(shotid,timeid,runid,nbRun=True,IOL=True):
-    
-    errLog=open("GT3err.%s.%s.log" % (shotid,timeid),"a+")
-    errLog.write("\n")
-    errLog.write("Time: %s \n" % str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
-    errLog.write("%s.%s.%s  nbRun=%s IOL=%s \n" % (str(shotid),str(timeid),str(runid),str(nbRun),str(IOL)))
-    
-    sys.stderr=errLog
-    warnings.simplefilter('always', UserWarning)
-    warnings.simplefilter('always', RuntimeWarning)
-    warnings.showwarning=customwarn
-    
     ###########################################################################
     #
     #    New GTEDGE 3 with full core data and interpretation
@@ -90,6 +79,17 @@ def run(shotid,timeid,runid,nbRun=True,IOL=True):
     #   Input/GT3NBIConsts_144977_3000                  NBI-Relevent Constants
     #
     ############################################################################
+    
+    errLog=open("GT3err.%s.%s.log" % (shotid,timeid),"a+")
+    errLog.write("\n")
+    errLog.write("Time: %s \n" % str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+    errLog.write("%s.%s.%s  nbRun=%s IOL=%s \n" % (str(shotid),str(timeid),str(runid),str(nbRun),str(IOL)))
+    
+    sys.stderr=errLog
+    warnings.simplefilter('always', UserWarning)
+    warnings.simplefilter('always', RuntimeWarning)
+    warnings.showwarning=customwarn
+    
 
 
     fileNames=funcs.dataCat.CatalogueCall(shotid,timeid,runid)
